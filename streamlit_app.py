@@ -17,7 +17,7 @@ def process_txt(file):
                 name_start = 43
                 name_end = cpf_start
                 name_raw = line[name_start:name_end].strip()
-                name_clean = re.sub(r"[^A-Za-zÀ-ÿ\\s]", "", name_raw).strip()
+                name_clean = re.sub(r"[0-9]", "", name_raw).strip()
 
                 value_match = re.search(r"\d{7}$", line.strip())
                 if value_match:
