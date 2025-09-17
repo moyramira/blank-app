@@ -36,7 +36,7 @@ def to_excel(df):
     return output
 
 # Interface do Streamlit
-st.title("📄 Extrator de Beneficiários")
+st.title("📄 Conversão TXT Pluxee")
 
 uploaded_file = st.file_uploader("Envie o arquivo .txt", type="txt")
 
