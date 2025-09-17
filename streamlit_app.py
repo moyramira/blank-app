@@ -1,5 +1,3 @@
-valida esse codigo pois não está abrindo no navegador
-
 import streamlit as st
 import pandas as pd
 import re
