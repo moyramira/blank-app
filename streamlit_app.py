@@ -17,7 +17,7 @@ def process_txt(file):
                 name_start = 43
                 name_end = cpf_start
                 name_raw = line[name_start:name_end].strip()
-                name_clean = re.sub(r"[^A-Za-zÀ-ÿ\s]", "", name_raw).strip()
+                name_clean = re.sub(r"[^A-Za-zÀ-ÿ\\s]", "", name_raw).strip()
 
                 value_match = re.search(r"\d{7}$", line.strip())
                 if value_match:
@@ -32,10 +32,11 @@ def to_excel(df):
     output = BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         df.to_excel(writer, index=False, sheet_name='Beneficiários')
-    return output.getvalue()
+    output.seek(0)
+    return output
 
 # Interface do Streamlit
-st.title("📄 Conversão TXT Pluxee")
+st.title("📄 Extrator de Beneficiários")
 
 uploaded_file = st.file_uploader("Envie o arquivo .txt", type="txt")
 
